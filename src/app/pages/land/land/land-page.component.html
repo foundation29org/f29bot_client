@@ -3,7 +3,9 @@
   <div class="container-fluid"><!-- gradient-red-pink-->
     <div class="row">
         <div class="col-12 d-flex align-items-center justify-content-center">
-            <img src="https://www.nextdoorpublishers.com/wp-content/uploads/2023/02/EERR_5.png" alt="logo" class="img-fluid border" width="200px">
+            <a target="_blank" href="https://www.nextdoorpublishers.com/libros/por-que-mi-hijo-tiene-una-enfermedad-rara/">
+              <img src="https://www.nextdoorpublishers.com/wp-content/uploads/2023/02/EERR_5.png" alt="logo" class="img-fluid border" width="200px">
+            </a>
         </div>
         
     </div>
@@ -12,27 +14,35 @@
                 
               <div class="card width-800 mt-4">
                   <div class="card-body">
-                      <div class="card-block">
-                          <h4 class="text-bold-500 text-left">{{'homeraito.Question' | translate }}</h4>
+                      <div class="card-block center-elements">
+                          <h4 class="text-bold-500">{{'homeraito.Question' | translate }}</h4>
                           <div class="row">
-                              <div class="col-10">
-                                  <input type="text" class="form-control"
-                                      placeholder="{{'homeraito.Type a question in the text box' | translate }}"
-                                      [(ngModel)]="query">
-                              </div>
-                              <div class="col-2">
-                                  <button class="btn btn-primary" [disabled]="sending"
-                                      (click)="search()"><span *ngIf="!sending">{{'homeraito.Search' |
-                                          translate }}</span><span *ngIf="sending"><em
-                                              class="fa fa-spinner fa-2x fa-spin fa-fw"></em></span></button>
-
-                              </div>
+                                <div class="col-12">
+                                <input type="text" class="form-control"
+                                    [placeholder]="('homeraito.Type a question in the text box' | translate)"
+                                    [(ngModel)]="query" (keyup.enter)="search()">
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <div class="d-block">
+                                    <mat-slide-toggle [(ngModel)]="isComplexSearch">
+                                        <span *ngIf="!isComplexSearch">Respuesta corta</span>
+                                        <span *ngIf="isComplexSearch">Respuesta larga</span>
+                                    </mat-slide-toggle>
+                                    </div>
+                                    <div class="d-block">
+                                    <button class="btn btn-primary mt-2" [disabled]="sending" (click)="search()">
+                                        <span *ngIf="!sending">{{'homeraito.Search' | translate }}</span>
+                                        <span *ngIf="sending"><em class="fa fa-spinner fa-2x fa-spin fa-fw"></em></span>
+                                    </button>
+                                    </div>
+                                </div>
                           </div>
-                          <div *ngIf="searchopenai">
-                            No hemos encontrado nada en el libro, vamos a buscar en openAi
+                          <hr *ngIf="(!sending && responseLangchain!='') || searchopenai">
+                          <div class="mt-2" *ngIf="searchopenai">
+                            No hemos encontrado nada en el libro, vamos a buscar en OpenAI..
                           </div>
                           <div *ngIf="!sending && responseLangchain!=''" class="mt-3">
-                              <h4 class="text-bold-500 text-left">{{queryCopy}}</h4>
+                              <h4 class="text-bold-500">{{queryCopy}}</h4>
                               <div class="row">
                                   <div class="col-12">
                                       <p>{{responseLangchain}}</p>

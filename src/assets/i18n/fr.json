@@ -813,6 +813,8 @@
        "MsgDisclaimer":"Vous êtes sur le point de tester GPT3, système d'intelligence artificielle. Il répondra automatiquement à votre question et il n'y a aucune garantie quant à la qualité de la réponse. Écrivez votre nom si vous êtes d'accord et comprenez.",
        "I agree":"Je suis d'accord",
        "Type a question in the text box":"Tapez une question dans la zone de texte",
+       "Type a question in the text box (simple answer)": "Tapez une question dans la zone de texte (réponse simple)",
+       "Type a question in the text box (complex answer)": "Tapez une question dans la zone de texte (réponse complexe)",
        "Any question about your disease?":"Une question sur votre maladie ?",
        "Normalized":"Données normalisées",
        "Not normalized":"Données non normalisées",
