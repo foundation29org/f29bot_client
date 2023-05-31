@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgApexchartsModule } from "ng-apexcharts";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 import { LandPageComponent } from "./land/land-page.component";
@@ -37,7 +38,8 @@ import {MatRadioModule} from '@angular/material/radio';
         MatRadioModule,
         NgApexchartsModule,
         MatDatepickerModule,
-        MatNativeDateModule 
+        MatNativeDateModule,
+        MatSlideToggleModule 
     ],
     declarations: [
         LandPageComponent

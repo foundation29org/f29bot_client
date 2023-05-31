@@ -20,21 +20,25 @@ export class LandPageComponent {
   queryCopy: string = '';
   responseLangchain: string = '';
   searchopenai: boolean = false;
+  isComplexSearch: boolean = false;
   constructor(public translate: TranslateService, public toastr: ToastrService, private openAiService: OpenAiService) {
   }
 
   search() {
     console.log(this.query)
+    console.log(this.isComplexSearch)
     this.sending = true;
     this.searchopenai = false;
-    let query = { "question": this.query };
+    let query = { 
+      "question": this.query, "isComplexSearch": this.isComplexSearch
+   };
     this.responseLangchain = '';
     this.subscription.add(this.openAiService.postOpenAi3(query)
       .subscribe((res: any) => {
         console.log(res)
         if(res.data.indexOf("I don't know") !=-1 || res.data.indexOf("No sé") !=-1 ) {
           this.searchopenai = true;
-          let value = { value: this.query };
+          let value = { value: this.query, isComplexSearch: this.isComplexSearch };
           this.subscription.add(this.openAiService.postOpenAi(value)
             .subscribe((res: any) => {
               this.queryCopy = this.query;

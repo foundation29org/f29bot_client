@@ -813,6 +813,8 @@
     "MsgDisclaimer": "You are about to test GPT3, artificial intelligence system. It will answer your question automatically and there is no guarantee about the quality of the answer. Write your name if you agree and understand.",
     "I agree": "I agree",
     "Type a question in the text box": "Type a question in the text box",
+    "Type a question in the text box (simple answer)": "Type a question in the text box (simple answer)",
+    "Type a question in the text box (complex answer)": "Type a question in the text box (complex answer)",
     "Any question about your disease?": "Any question about your disease?",
     "Normalized": "Normalized data",
     "Not normalized": "Not normalized data",
