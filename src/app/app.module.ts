@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ToastrModule } from "ngx-toastr";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { StoreModule } from "@ngrx/store";
@@ -45,7 +45,7 @@ import { LocalizedDatePipe } from 'app/shared/services/localizedDatePipe.service
 import { HighlightSearch } from 'app/shared/services/search-filter-highlight.service';
 import { SearchFilterPipe } from 'app/shared/services/search-filter.service';
 import { Data } from 'app/shared/services/data.service';
-
+import { AuthInterceptor } from './shared/auth/auth.interceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -78,6 +78,11 @@ export function createTranslateLoader(http: HttpClient) {
     PerfectScrollbarModule
   ],
   providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true
+    },
     DragulaService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
