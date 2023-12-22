@@ -57,6 +57,7 @@ export class LandPageComponent {
               this.query = '';
               this.responseLangchain = res.choices[0].message.content;
               this.sending = false;
+              this.scrollTo();
             }, (err) => {
               this.sending = false;
               console.log(err);
@@ -70,6 +71,7 @@ export class LandPageComponent {
           this.query = '';
           this.responseLangchain = res.data;
           console.log(this.sending)
+          this.scrollTo();
           
         }
 
@@ -80,6 +82,15 @@ export class LandPageComponent {
       }));
 
   }
+
+  async scrollTo() {
+    await this.delay(200);
+    document.getElementById('initcontentIntro').scrollIntoView({ behavior: "smooth" });
+}
+
+delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 
 }
