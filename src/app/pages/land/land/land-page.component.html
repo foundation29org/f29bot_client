@@ -1,39 +1,56 @@
 <!--Login Page Starts-->
 <section id="login">
   <div class="container-fluid"><!-- gradient-red-pink-->
-    <div class="row">
-        <div class="col-12 d-flex align-items-center justify-content-center">
-            <a target="_blank" href="https://www.nextdoorpublishers.com/libros/por-que-mi-hijo-tiene-una-enfermedad-rara/">
-              <img src="https://www.nextdoorpublishers.com/wp-content/uploads/2023/02/EERR_5.png" alt="logo" class="img-fluid border" width="200px">
-            </a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4 text-center mt-3">
+                <a class="linkbook" target="_blank" href="https://www.nextdoorpublishers.com/libros/por-que-mi-hijo-tiene-una-enfermedad-rara/">
+                    <img alt="comprar libro" width="150px" class="img-fluid border round" src='assets/img/book.webp' />
+                </a>
+            </div>
+            <div class="col-md-6 text-header mt-3">
+                <h3 class="text-bold-700 primary mb-0">¿Por qué mi hijo tiene una enfermedad rara?</h3>
+                <p>Lluís Montoliu</p>
+                <p>Next Door Publishers - 2023</p>
+                <a class="btn btn-outline-primary" target="_blank" href="https://www.nextdoorpublishers.com/libros/por-que-mi-hijo-tiene-una-enfermedad-rara/">Comprar el libro</a>
+            </div>
         </div>
-        
     </div>
       <div class="row">
           <div class="col-12 d-flex align-items-center justify-content-center">
                 
-              <div class="card width-800 mt-4">
+              <div class="card round width-800 mt-4">
                   <div class="card-body">
                       <div class="card-block center-elements">
-                          <h4 class="text-bold-500">{{'homeraito.Question' | translate }}</h4>
+                          <h4 class="text-bold-700 primary">Pregunta en el libro</h4>
                           <div class="row">
                                 <div class="col-12">
                                 <input type="text" class="form-control"
                                     [placeholder]="('homeraito.Type a question in the text box' | translate)"
-                                    [(ngModel)]="query" (keyup.enter)="search()">
+                                    [(ngModel)]="query" (keyup.enter)="search()" [disabled]="sending">
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <div class="d-block">
-                                    <mat-slide-toggle [(ngModel)]="isComplexSearch">
-                                        <span *ngIf="!isComplexSearch">Respuesta corta</span>
-                                        <span *ngIf="isComplexSearch">Respuesta larga</span>
-                                    </mat-slide-toggle>
+                                    <div class="d-block" *ngIf="query!='' && !sending">
+                                        <mat-slide-toggle [(ngModel)]="isComplexSearch">
+                                            <span *ngIf="!isComplexSearch">Respuesta corta</span>
+                                            <span *ngIf="isComplexSearch">Respuesta larga</span>
+                                        </mat-slide-toggle>
                                     </div>
-                                    <div class="d-block">
-                                    <button class="btn btn-primary mt-2" [disabled]="sending" (click)="search()">
-                                        <span *ngIf="!sending">{{'homeraito.Search' | translate }}</span>
-                                        <span *ngIf="sending"><em class="fa fa-spinner fa-2x fa-spin fa-fw"></em></span>
-                                    </button>
+                                    <div class="d-block mb-2">
+                                        <button class="btn btn-outline-primary mt-2" [disabled]="sending" (click)="search()">
+                                            <span *ngIf="!sending">Buscar en el libro</span>
+                                            <span *ngIf="sending"><em class="fa fa-spinner fa-2x fa-spin fa-fw"></em></span>
+                                        </button>
+                                    </div>
+                                    <div class="d-block mt-4" *ngIf="query=='' && !sending">
+                                        <p class="text-bold-700 primary mb-0">Si no sabes que preguntar, te proponemos algunas sugerencias:</p>
+                                        <div class="row">
+                                            <div *ngFor="let suggestion of questions" class="col-md-4">
+                                                <div class="card card-body card-custom d-flex justify-content-center align-items-center pointer" (click)="selectSuggestion(suggestion)">
+                                                    {{suggestion.value}}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                           </div>
@@ -53,6 +70,11 @@
                   </div>
               </div>
           </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 center-elements mt-3">
+            <p>Este proyecto ha sido posible gracias a los modelos de lenguaje de OpenAI</p>
+        </div>
       </div>
   </div>
 </section>

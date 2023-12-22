@@ -36,11 +36,11 @@ html body.layout-dark:not(.layout-transparent) .card {
 }
 
 a {
-  color: #f9423a;
+  color: #a69741;
 }
 
 input{
-  accent-color: #f9423a !important;
+  accent-color: #a69741 !important;
 }
 
 .gradient-red-ocean {
@@ -202,8 +202,8 @@ a:hover, a:focus {
 }
 
 .swal2-icon.swal2-warning {
-  border-color: #F9423A !important;
-  color: #F9423A !important;
+  border-color: #a69741 !important;
+  color: #a69741 !important;
 }
 
 .tab-content {
@@ -357,15 +357,15 @@ a:hover, a:focus {
 }
 
 .textExtractedNcr > a > b{
-  background-color: #f9423a;
+  background-color: #a69741;
 }
 .textExtractedNcr >  b{
-  background-color: #f9423a;
+  background-color: #a69741;
 }
 mark{
   text-decoration: underline;
-  -webkit-text-decoration-color: #f9423a; /* Safari */  
-  text-decoration-color: #f9423a;
+  -webkit-text-decoration-color: #a69741; /* Safari */  
+  text-decoration-color: #a69741;
   background-color: #FFF;
   text-decoration-thickness: 3px;
 }
