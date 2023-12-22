@@ -9,6 +9,18 @@
   margin-top: 1em !important;
 }
 
+
+::ng-deep table{
+  margin-bottom: 1em !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::ng-deep th, td{
+  padding: 0.5em !important;
+}
+
+
 .card-custom:hover{
   background-color: #eae9e9;
 }
