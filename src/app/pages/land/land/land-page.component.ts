@@ -32,8 +32,11 @@ export class LandPageComponent {
 
 
   selectSuggestion(question) {
+    var tempComplex = this.isComplexSearch
     this.query = question.value;
+    this.isComplexSearch = true;
     this.search();
+    this.isComplexSearch = tempComplex;
   }
 
   search() {
@@ -56,6 +59,9 @@ export class LandPageComponent {
               this.queryCopy = this.query;
               this.query = '';
               this.responseLangchain = res.choices[0].message.content;
+              const regex = /^```html\n|\n```$/g;
+              this.responseLangchain = this.responseLangchain.replace(regex, '');
+              this.responseLangchain = this.responseLangchain.replace(/【.*?】/g, "");
               this.sending = false;
               this.scrollTo();
             }, (err) => {
@@ -70,6 +76,9 @@ export class LandPageComponent {
           this.queryCopy = this.query;
           this.query = '';
           this.responseLangchain = res.data;
+          const regex = /^```html\n|\n```$/g;
+          this.responseLangchain = this.responseLangchain.replace(regex, '');
+          this.responseLangchain = this.responseLangchain.replace(/【.*?】/g, "");
           console.log(this.sending)
           this.scrollTo();
           
