@@ -21,7 +21,19 @@ export class LandPageComponent {
   responseLangchain: string = '';
   searchopenai: boolean = false;
   isComplexSearch: boolean = false;
+  questions: any = [];
   constructor(public translate: TranslateService, public toastr: ToastrService, private openAiService: OpenAiService) {
+    this.questions = [
+      { value: '¿Qué es una enfermedad rara?'},
+      { value: '¿Cuántas personas con enfermedades raras pueden existir en Madrid?'},
+      { value: '¿Existen terapias para las enfermedades raras?'}
+    ]
+  }
+
+
+  selectSuggestion(question) {
+    this.query = question.value;
+    this.search();
   }
 
   search() {
