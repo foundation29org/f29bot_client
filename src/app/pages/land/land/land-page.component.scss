@@ -5,6 +5,10 @@
   border: 1px solid #a69741 !important;
 }
 
+::ng-deep h3{
+  margin-top: 1em !important;
+}
+
 .card-custom:hover{
   background-color: #eae9e9;
 }
